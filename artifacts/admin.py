@@ -20,6 +20,5 @@ class PreservationRecordInline(admin.TabularInline):
 
 @admin.register(Artifact)
 class ArtifactAdmin(admin.ModelAdmin):
-    list_display = ['title', 'category', 'material', 'slug']
-    prepopulated_fields = {'slug': ('title',)}
+    list_display = ['title', 'category', 'material']
     inlines = [ArtifactResourceInline, PreservationRecordInline]

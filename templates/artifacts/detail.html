@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ artifact.title }} | Archive{% endblock %}
+
+{% block content %}
+<div class="detail-container">
+    <nav class="detail-nav">
+        <a href="{% url 'artifacts:list' %}" class="btn-back">&larr; Back to Collection</a>
+    </nav>
+
+    <div class="detail-grid">
+        <div class="detail-gallery">
+            {% if artifact.resources.all %}
+                <img src="{{ artifact.resources.first.image_url }}" alt="{{ artifact.title }}" class="main-artifact-img">
+                <div class="thumbnail-row">
+                    {% for res in artifact.resources.all %}
+                        <img src="{{ res.image_url }}" alt="Detail view" class="thumb">
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="detail-info">
+            <p class="meta-tag">{{ artifact.category.name|upper }}</p>
+            <h1>{{ artifact.title }}</h1>
+
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <strong>Material:</strong> <span>{{ artifact.get_material_display }}</span>
+                </div>
+                <div class="spec-item">
+                    <strong>Origin:</strong> <span>{{ artifact.origin_location|default:"Ancient Bulgaria" }}</span>
+                </div>
+            </div>
+
+            <div class="history-content">
+                <h3>Historical Significance</h3>
+                <p>{{ artifact.description|linebreaks }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

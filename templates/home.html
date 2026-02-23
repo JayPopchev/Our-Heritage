@@ -1,10 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}Home | Bulgarian Heritage Archive{% endblock %}
+
+{% block content %}
+    <section class="hero-section">
+        <h1>Bulgarian Heritage Archive</h1>
+        <p>Discover the rich history and ancient treasures of Bulgaria...</p>
+        <a href="{% url 'artifacts:list' %}" class="btn-primary">Explore the Collection</a>
+    </section>
+
+    <section class="featured-section">
+        <h2 class="section-title">Recently Added Discoveries</h2>
+
+        <div class="artifact-grid">
+            {% for artifact in featured_artifacts %}
+                <div class="artifact-card">
+                    {% if artifact.resources.first %}
+                        <img src="{{ artifact.resources.first.image_url }}"
+                             alt="{{ artifact.title }}"
+                             class="artifact-card-img">
+                    {% endif %}
+
+                    <h3>{{ artifact.title }}</h3>
+                    <p class="meta">{{ artifact.category }} | {{ artifact.get_material_display }}</p>
+                    <p>{{ artifact.description|truncatewords:15 }}</p>
+                    <a href="{% url 'artifacts:detail' artifact.slug %}" class="btn-secondary">View Details &rarr;</a>
+                </div>
+            {% empty %}
+                <p class="empty-message">
+                    The archive is currently being prepared...
+                </p>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

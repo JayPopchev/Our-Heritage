@@ -58,7 +58,9 @@ class Artifact(models.Model):
         blank=True
     )
 
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True,
+                            blank=True,
+                            )
 
     def save(self, *args, **kwargs):
         if not self.slug:
