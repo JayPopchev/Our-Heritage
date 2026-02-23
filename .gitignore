@@ -1,0 +1,18 @@
+# Security
+.env
+
+# Environments
+.env/
+venv/
+.venv/
+ENV/
+
+# PyCharm / IDE
+.idea/
+
+# Python junk
+__pycache__/
+*.pyc
+
+# Local Database
+db.sqlite3
