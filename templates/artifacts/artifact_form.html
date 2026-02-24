@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="form-page-wrapper">
+    <div class="form-card">
+       <div class="form-header">
+           <span class="heritage-accent">Digital Archive Entry</span>
+            <h1>{{ title }}</h1>
+        </div>
+
+        <form method="post" class="heritage-form" novalidate>
+            {% csrf_token %}
+
+            <div class="form-grid">
+                {% for field in form %}
+                    <div class="form-group">
+                        <label>{{ field.label }}</label>
+
+                        <div class="input-wrapper">
+                            {{ field }}
+                        </div>
+
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <span class="error-message">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="form-actions">
+                <a href="{% url 'artifacts:list' %}" class="btn-cancel">Cancel</a>
+                <button type="submit" class="btn-primary">Save to Archive</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

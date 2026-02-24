@@ -4,36 +4,46 @@
 {% block title %}Collection | Bulgarian Heritage Archive{% endblock %}
 
 {% block content %}
+<div class="dashboard-header">
+    <h1>Archive Collection</h1>
+    <div class="admin-actions">
+        <a href="{% url 'artifacts:create' %}" class="btn-add-new">
+            <span class="plus-icon">+</span> Register New Artifact
+        </a>
+    </div>
+</div>
+
 <div class="dashboard-container">
 
     <aside class="filter-sidebar">
         <h3>Filter Archive</h3>
 
         <form hx-get="{% url 'artifacts:list' %}"
-      hx-target="#artifact-results"
-      hx-trigger="change, keyup delay:300ms">
+              hx-target="#artifact-results"
+              hx-trigger="input delay:300ms, change">
 
-    <div class="filter-group search-group">
-        <label>Find a Treasure</label>
-        {{ filter.form.title }}
-    </div>
+            <div class="filter-group search-group">
+                <label>Find a Treasure</label>
+                {{ filter.form.title }}
+            </div>
 
-    <div class="filter-group">
-        <label>Material</label>
-        {{ filter.form.material }}
-    </div>
+            <div class="filter-group">
+                <label>Material</label>
+                {{ filter.form.material }}
+            </div>
 
-    <div class="filter-group">
-        <label>Historical Period</label>
-        {{ filter.form.category }}
-    </div>
+            <div class="filter-group">
+                <label>Historical Period</label>
+                {{ filter.form.category }}
+            </div>
 
-    <a href="{% url 'artifacts:list' %}" class="btn-reset">Reset Filters</a>
-</form>
+            <a href="{% url 'artifacts:list' %}" class="btn-reset">Reset Filters</a>
+        </form>
     </aside>
 
     <section class="results-area">
         <h2 class="section-title">The Collection</h2>
+
         <div id="artifact-results">
             {% include 'artifacts/partials/artifact_list.html' %}
         </div>

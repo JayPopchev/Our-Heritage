@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Preservation History | {{ artifact.title }}{% endblock %}
+
+{% block content %}
+<div class="detail-container">
+    <nav class="detail-nav">
+        <a href="{% url 'artifacts:detail' artifact.slug %}" class="btn-cancel">&larr; Back to Artifact</a>
+    </nav>
+
+    <div class="dashboard-header preservation-header">
+        <div>
+            <span class="heritage-accent">Preservation History</span>
+            <h1>{{ artifact.title }}</h1>
+        </div>
+
+        {% if records %}
+        <div class="admin-actions">
+            <a href="{% url 'preservation:add' artifact.slug %}" class="btn-add-new">
+                <span class="plus-icon">+</span> Log New Check
+            </a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="records-list">
+        {% for record in records %}
+            <div class="artifact-card record-card">
+                <h3>Date: {{ record.check_date }}</h3>
+
+                <div class="record-specs-grid">
+                    <p><strong>Condition:</strong> <span class="material-tag">{{ record.get_condition_display }}</span></p>
+                    <p><strong>On Display:</strong> {% if record.is_on_display %}Yes{% else %}No{% endif %}</p>
+                    <p class="spec-full-width"><strong>Current Location:</strong> {{ record.current_location }}</p>
+                </div>
+
+                {% if record.restoration_notes %}
+                    <hr class="record-divider">
+                    <p><strong>Restoration Notes:</strong><br>{{ record.restoration_notes|linebreaksbr }}</p>
+                {% endif %}
+
+                <div class="record-actions">
+                    <a href="{% url 'preservation:log_detail' artifact.slug record.pk %}" class="text-link">View Full Detail</a>
+                    <a href="{% url 'preservation:edit' artifact.slug record.pk %}" class="text-link-edit">Edit Record</a>
+                    <a href="{% url 'preservation:delete' artifact.slug record.pk %}" class="text-link-danger">Delete</a>
+                </div>
+            </div>
+
+        {% empty %}
+            <div class="empty-message">
+                <h2>No Preservation Checks Yet</h2>
+                <p>There are currently no preservation logs recorded for this artifact. You can add the very first inspection report now.</p>
+                <br>
+                <a href="{% url 'preservation:add' artifact.slug %}" class="btn-primary">Add First Preservation Log</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

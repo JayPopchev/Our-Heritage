@@ -1,0 +1,159 @@
+/* Sidebar Filter Forms */
+.filter-group {
+    margin-bottom: 1.5rem;
+}
+
+.filter-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--dark-wood);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Shared Inputs for Sidebar Filters & Main Forms */
+.filter-group input,
+.filter-group select,
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e5e0d8;
+    background: var(--bg-linen);
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* Make textareas a bit taller by default */
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+    padding: 14px; /* Slightly larger padding for main form textareas */
+}
+
+/* Gold accent on focus to match the theme */
+.filter-group input:focus,
+.filter-group select:focus,
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--gold-thracian);
+    background: white;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1);
+}
+
+/* Style the reset button to match your components */
+.btn-reset {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 10px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border: 1px solid #e5e0d8;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.btn-reset:hover {
+    background-color: var(--red-shevitsa);
+    color: white;
+    border-color: var(--red-shevitsa);
+}
+
+/* Form Actions (Button Container) */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e0d8;
+}
+
+/* Error Messages */
+.error-message {
+    color: var(--red-shevitsa);
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 0.5rem;
+    font-weight: bold;
+    font-family: 'Lora', serif;
+}
+
+/* Optional: If a field has an error, make the input border red too */
+.form-group:has(.error-message) input,
+.form-group:has(.error-message) select,
+.form-group:has(.error-message) textarea {
+    border-color: var(--red-shevitsa);
+    background-color: #fffafb;
+}
+
+/* The outer wrapper to center the form nicely on the page */
+.form-page-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* The card itself - matching your .artifact-card style */
+.form-card {
+    background: white;
+    padding: 3rem;
+    border: 1px solid #e5e0d8;
+    border-top: 6px solid var(--red-shevitsa); /* Nice heritage pop of color */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-radius: 4px;
+}
+
+/* Header styling */
+.form-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e5e0d8;
+}
+
+/* Fixes the "Too Dark" text by using your gorgeous gold variable */
+.heritage-accent {
+    display: block;
+    color: var(--gold-thracian);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    color: var(--dark-wood);
+}
+
+/* Form Grid & Layout */
+.form-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+/* Styling the labels */
+.form-group label {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--dark-wood);
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}

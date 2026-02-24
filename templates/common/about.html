@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About | Bulgarian Heritage Archive{% endblock %}
+
+{% block content %}
+<div class="detail-container about-container">
+    <div class="form-card about-card">
+        <div class="form-header">
+            <span class="heritage-accent">Project Documentation</span>
+            <h1>About the Archive</h1>
+        </div>
+
+        <div class="history-content about-content">
+            <p>Welcome to the <strong>Bulgarian Heritage Archive</strong>, a digital preservation system dedicated to cataloging and maintaining the rich historical artifacts of Bulgaria's ancient past.</p>
+
+            <h3 class="about-section-title">Our Mission</h3>
+            <p>From the golden treasures of the Thracians to the intricate relics of the Byzantine era, our goal is to provide curators, historians, and enthusiasts with a robust platform to track, study, and preserve these priceless artifacts.</p>
+
+            <h3 class="about-section-title">System Features</h3>
+            <ul class="about-list">
+                <li><strong>Comprehensive Cataloging:</strong> Track artifact origins, materials, and historical significance.</li>
+                <li><strong>Preservation Logs:</strong> Monitor the condition and restoration history of each item over time.</li>
+                <li><strong>Dynamic Filtering:</strong> Easily search through periods, materials, and names to locate specific records.</li>
+            </ul>
+
+            <div class="about-actions">
+                <a href="{% url 'artifacts:list' %}" class="btn-primary">Browse the Collection</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

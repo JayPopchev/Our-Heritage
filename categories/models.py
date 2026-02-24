@@ -21,5 +21,8 @@ class Category(models.Model):
         blank=True
     )
 
+    def __str__(self):
+        return self.get_name_display()
+
 
 

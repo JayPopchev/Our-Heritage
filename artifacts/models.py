@@ -67,3 +67,13 @@ class Artifact(models.Model):
             self.slug = slugify(self.title)
 
         super().save(*args, **kwargs)
+
+class Exhibition(models.Model):
+    title = models.CharField(max_length=100)
+    location = models.CharField(max_length=150)
+    start_date = models.DateField()
+    end_date = models.DateField()
+    artifacts = models.ManyToManyField('Artifact', related_name='exhibitions')
+
+    def __str__(self):
+        return self.title

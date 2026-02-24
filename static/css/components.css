@@ -1,0 +1,165 @@
+/* static/css/components.css */
+.btn-primary { background-color: var(--red-shevitsa); color: white; padding: 12px 28px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 1px; border: 2px solid var(--red-shevitsa); transition: all 0.3s ease; }
+.btn-primary:hover { background-color: white; color: var(--red-shevitsa); }
+.btn-secondary { color: var(--red-shevitsa); text-decoration: none; font-weight: bold; font-style: italic; border-bottom: 1px solid transparent; transition: border 0.3s ease; }
+.btn-secondary:hover { border-bottom: 1px solid var(--red-shevitsa); }
+.btn-add-new { background-color: var(--gold-thracian); color: white; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-flex; align-items: center; transition: transform 0.2s; }
+.btn-add-new:hover { transform: translateY(-2px); background-color: #c5a059; }
+
+/* Cards */
+.artifact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+.artifact-card { background: white; padding: 2rem; border: 1px solid #e5e0d8; border-left: 4px solid var(--gold-thracian); box-shadow: 0 4px 15px rgba(0,0,0,0.03); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.artifact-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.08); }
+.artifact-card h3 { margin-top: 0; font-size: 1.6rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
+.artifact-card-img { width: 100%; height: 220px; object-fit: cover; margin-bottom: 1.5rem; border: 1px solid #e5e0d8; border-bottom: 3px solid var(--gold-thracian); }
+
+/* Tags */
+.material-tag, .meta-tag { background: var(--bg-linen); color: var(--gold-thracian); padding: 4px 8px; font-size: 0.8rem; font-weight: bold; border: 1px solid var(--gold-thracian); }
+.meta-tag { letter-spacing: 2px; margin-bottom: 0.5rem; border: none; background: transparent; padding: 0;}
+
+/* Cancel Button */
+.btn-cancel {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.btn-cancel:hover {
+    color: var(--red-shevitsa);
+}
+
+/* --- Card Images --- */
+/* The box that holds the image */
+.card-image-wrapper {
+    width: 100%;
+    height: 220px; /* Fixed height so all cards line up perfectly */
+    overflow: hidden;
+    background-color: var(--bg-linen);
+    border-bottom: 3px solid var(--gold-thracian); /* A premium gold separator */
+    border-radius: 4px 4px 0 0; /* Rounds the top corners to match the card */
+}
+
+/* The actual image */
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Acts like background-size: cover (no stretching!) */
+    transition: transform 0.4s ease; /* Smooth animation setup */
+}
+
+/* Subtle zoom effect when hovering over the card */
+.artifact-card:hover .card-image-wrapper img {
+    transform: scale(1.05);
+}
+
+/* Styling for the fallback placeholder (when no image URL is provided) */
+.placeholder-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    /* Removed height: 100% so it respects the 220px wrapper height */
+}
+
+/* =========================================
+   BUTTON GROUPS & MODIFIERS
+========================================= */
+.button-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Destructive / Delete Actions */
+.btn-danger {
+    color: #d9534f;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    border-bottom: 1px solid #d9534f;
+}
+
+.btn-confirm-delete {
+    background-color: #d9534f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-confirm-delete:hover {
+    background-color: #c9302c;
+}
+
+/* Reusable Empty State Box */
+.empty-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border: 1px dashed #ccc;
+    color: var(--text-muted);
+    font-style: italic;
+    border-radius: 4px;
+}
+
+/* --- Text Links --- */
+.text-link {
+    color: var(--dark-wood);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+.text-link:hover {
+    color: var(--gold-thracian);
+}
+
+.text-link-edit {
+    color: var(--gold-thracian);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+.text-link-edit:hover {
+    color: var(--dark-wood);
+}
+
+.text-link-danger {
+    color: #d9534f;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+.text-link-danger:hover {
+    color: #c9302c;
+}
+
+.btn-outline {
+    color: var(--red-shevitsa);
+    padding: 12px 28px;
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    border: 2px solid var(--red-shevitsa);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+.btn-outline:hover {
+    background-color: var(--bg-linen);
+    transform: translateY(-2px);
+}

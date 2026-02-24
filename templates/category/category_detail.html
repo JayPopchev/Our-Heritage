@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ category.get_name_display }} | Archive{% endblock %}
+
+{% block content %}
+<div class="detail-container">
+    <nav class="detail-nav">
+        <a href="{% url 'categories:list' %}" class="btn-cancel">&larr; Back to Eras</a>
+    </nav>
+
+    <div class="dashboard-header">
+        <div>
+            <span class="heritage-accent">Historical Era</span>
+            <h1>{{ category.get_name_display }}</h1>
+        </div>
+        <div class="admin-actions">
+            <a href="{% url 'categories:edit' category.pk %}" class="btn-primary">Edit Era Details</a>
+            <a href="{% url 'categories:delete' category.pk %}" class="btn-danger" style="margin-left: 15px;">Delete Era</a>
+        </div>
+    </div>
+
+    <div class="history-content" style="margin-bottom: 3rem;">
+        <h3>Description</h3>
+        <p>{{ category.description|linebreaks }}</p>
+    </div>
+
+    <h2 class="section-title">Artifacts from this Period</h2>
+    <div class="artifact-grid">
+        {% for artifact in artifacts %}
+            {% include 'artifacts/partials/artifact_card.html' with artifact=artifact %}
+        {% empty %}
+            <div class="empty-message">
+                <p>No artifacts have been cataloged for the {{ category.get_name_display }} yet.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

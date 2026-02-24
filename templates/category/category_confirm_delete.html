@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Confirm Deletion | {{ category.get_name_display }}{% endblock %}
+
+{% block content %}
+<div class="delete-overlay">
+    <div class="delete-modal">
+        <h1 class="text-danger-title">Irreversible Action</h1>
+        <p>You are about to permanently remove the <strong>"{{ category.get_name_display }}"</strong> period and its associations from the digital archive.</p>
+        <form method="post">
+            {% csrf_token %}
+            <div class="delete-actions">
+                <button type="submit" class="btn-confirm-delete">Yes, Remove from History</button>
+                <a href="{% url 'categories:detail' category.pk %}" class="btn-cancel">No, Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

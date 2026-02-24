@@ -1,0 +1,270 @@
+/* static/css/pages.css */
+.hero-section { text-align: center; background-color: white; padding: 5rem 2rem; border: 1px solid #e5e0d8; border-top: 6px solid var(--gold-thracian); box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 4rem; }
+.hero-section h1 { font-size: 3rem; margin-bottom: 1.5rem; color: var(--red-shevitsa); }
+
+/* Dashboard & Sidebar */
+.dashboard-container { display: grid; grid-template-columns: 280px 1fr; gap: 3rem; align-items: start; }
+.filter-sidebar { background: white; padding: 2rem; border: 1px solid #e5e0d8; border-top: 4px solid var(--red-shevitsa); position: sticky; top: 2rem; }
+
+/* Detail Page */
+.detail-container { max-width: 1100px; margin: 0 auto; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; background: white; padding: 3rem; border: 1px solid #e5e0d8; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+
+@media (max-width: 768px) { .detail-grid { grid-template-columns: 1fr; } .dashboard-container { grid-template-columns: 1fr; } }
+
+.detail-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* The big main image box */
+.main-image-container {
+    width: 100%;
+    height: 450px; /* Fixed height so the page doesn't jump around */
+    overflow: hidden;
+    background-color: var(--bg-linen);
+    border: 1px solid #e5e0d8;
+    border-bottom: 4px solid var(--gold-thracian);
+    border-radius: 4px;
+}
+
+.main-artifact-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prevents ugly stretching */
+    transition: opacity 0.3s ease;
+}
+
+/* The row of small clickable images */
+.thumbnail-row {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto; /* Let users scroll sideways if there are 10+ images */
+    padding-bottom: 5px;
+}
+
+.thumb {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent; /* Invisible border to start */
+    border-radius: 4px;
+    opacity: 0.5; /* Fade out inactive images */
+    transition: all 0.3s ease;
+}
+
+.thumb:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* The currently selected image */
+.thumb.active {
+    opacity: 1;
+    border-color: var(--gold-thracian); /* Gold ring around active photo */
+}
+
+/* If the artifact has no photos at all */
+.no-image-placeholder {
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-linen);
+    color: var(--text-muted);
+    font-family: 'Lora', serif;
+    font-style: italic;
+    border: 1px solid #e5e0d8;
+    border-radius: 4px;
+}
+
+/* =========================================
+   DETAIL PAGE SPECIFICS
+========================================= */
+.detail-nav {
+    margin-bottom: 2rem;
+}
+
+.detail-info h1 {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.history-content h3 {
+    border-bottom: 2px solid var(--gold-thracian);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.history-content p {
+    line-height: 1.8;
+}
+
+.management-controls hr {
+    margin: 3rem 0 1.5rem 0;
+    border: none;
+    border-top: 1px solid #e5e0d8;
+}
+
+.admin-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+/* =========================================
+   DELETE CONFIRMATION PAGE
+========================================= */
+.delete-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+}
+
+.delete-modal {
+    background: white;
+    padding: 3rem;
+    border: 1px solid #e5e0d8;
+    border-top: 6px solid #d9534f;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-radius: 4px;
+    text-align: center;
+    max-width: 500px;
+}
+
+.delete-modal .warning-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.delete-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    align-items: center;
+}
+
+.preservation-header {
+    margin-bottom: 2rem;
+}
+
+.preservation-header h1 {
+    margin-top: 0;
+}
+
+.record-card {
+    margin-bottom: 2rem;
+}
+
+.record-card h3 {
+    color: var(--dark-wood);
+    margin-top: 0;
+}
+
+.record-specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.spec-full-width {
+    grid-column: 1 / -1;
+}
+
+.record-divider {
+    border: none;
+    border-top: 1px solid #e5e0d8;
+    margin: 1.5rem 0;
+}
+
+.record-actions {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e0d8;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.preservation-detail-card {
+    border-top-color: var(--gold-thracian);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.preservation-detail-card h1 {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.text-danger-title {
+    color: #d9534f;
+}
+
+.error-page-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+}
+
+.error-content {
+    text-align: center;
+    background: white;
+    padding: 4rem 3rem;
+    border: 1px solid #e5e0d8;
+    border-top: 6px solid var(--gold-thracian);
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    max-width: 600px;
+    width: 100%;
+}
+
+.error-code {
+    font-size: 8rem;
+    color: var(--red-shevitsa);
+    margin: 0 0 1rem 0;
+    line-height: 1;
+    font-family: 'Playfair Display', serif;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-card {
+    border-top-color: var(--gold-thracian);
+}
+
+.about-content {
+    font-size: 1.1rem;
+}
+
+.about-section-title {
+    margin-top: 2rem;
+}
+
+.about-list {
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+.about-actions {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+    align-items: center;
+}

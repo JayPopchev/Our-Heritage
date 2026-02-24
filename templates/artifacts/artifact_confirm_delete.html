@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Confirm Deletion | {{ artifact.title }}{% endblock %}
+
+{% block content %}
+<div class="delete-overlay">
+    <div class="delete-modal">
+        <h1>Irreversible Action</h1>
+        <p>You are about to permanently remove <strong>"{{ artifact.title }}"</strong> from the archive.</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <div class="delete-actions">
+                <button type="submit" class="btn-confirm-delete">
+                    Yes, Remove from History
+                </button>
+                <a href="{% url 'artifacts:detail' artifact.slug %}" class="btn-cancel">
+                    No, Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

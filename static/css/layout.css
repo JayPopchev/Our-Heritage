@@ -1,0 +1,25 @@
+/* static/css/layout.css */
+header {
+    background-color: var(--dark-wood);
+    border-bottom: 4px solid var(--red-shevitsa);
+    padding: 1rem 2rem;
+}
+
+.navbar { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+.logo a { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-svg-file { height: 48px; width: auto; display: block; }
+.logo-text { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--gold-thracian); line-height: 1; }
+
+.nav-links { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; }
+.nav-links a { color: var(--bg-linen); text-decoration: none; font-family: 'Lora', serif; font-size: 1.1rem; transition: color 0.3s ease; }
+.nav-links a:hover { color: var(--gold-thracian); }
+
+footer {
+    background-color: var(--dark-wood);
+    color: #aaa;
+    text-align: center;
+    padding: 2rem;
+    margin-top: auto;
+    font-size: 0.9rem;
+    border-top: 1px solid #444;
+}

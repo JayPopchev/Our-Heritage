@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Page Not Found | Bulgarian Heritage Archive{% endblock %}
+
+{% block content %}
+<div class="error-page-wrapper">
+    <div class="error-content">
+        <h1 class="error-code">404</h1>
+        <span class="heritage-accent" style="justify-content: center; display: flex;">Lost to Time</span>
+        <h2 style="margin-top: 0.5rem;">Artifact Not Found</h2>
+
+        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem;">
+            The page or treasure you are looking for has been lost to history. It may have been moved, removed from the archive, or perhaps it never existed.
+        </p>
+
+        <div style="display: flex; gap: 1.5rem; justify-content: center; align-items: center;">
+            <a href="{% url 'artifacts:home' %}" class="btn-primary">Return Home</a>
+            <a href="{% url 'artifacts:list' %}" class="btn-secondary">Browse Collection</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

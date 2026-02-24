@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Log {{ record.check_date }} | {{ artifact.title }}{% endblock %}
+
+{% block content %}
+<div class="detail-container">
+    <nav class="detail-nav">
+        <a href="{% url 'preservation:detail' artifact.slug %}" class="btn-cancel">&larr; Back to History</a>
+    </nav>
+
+    <div class="form-card preservation-detail-card">
+        <span class="meta-tag">Inspection Date: {{ record.check_date }}</span>
+        <h1>{{ artifact.title }}</h1>
+
+        <div class="specs-grid preservation-header">
+            <div class="spec-item">
+                <strong>Condition:</strong> <span class="material-tag">{{ record.get_condition_display }}</span>
+            </div>
+            <div class="spec-item">
+                <strong>On Display:</strong> <span>{% if record.is_on_display %}Yes{% else %}No{% endif %}</span>
+            </div>
+            <div class="spec-item spec-full-width">
+                <strong>Current Location:</strong> <span>{{ record.current_location }}</span>
+            </div>
+        </div>
+
+        {% if record.restoration_notes %}
+        <div class="history-content">
+            <h3>Restoration Notes</h3>
+            <p>{{ record.restoration_notes|linebreaks }}</p>
+        </div>
+        {% endif %}
+
+        <div class="management-controls">
+            <hr>
+            <div class="button-group">
+                <a href="{% url 'preservation:edit' artifact.slug record.pk %}" class="btn-primary">Edit Record</a>
+                <a href="{% url 'preservation:delete' artifact.slug record.pk %}" class="btn-danger">Delete Record</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

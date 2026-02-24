@@ -5,21 +5,14 @@
 
 {% block content %}
 <div class="detail-container">
+
     <nav class="detail-nav">
-        <a href="{% url 'artifacts:list' %}" class="btn-back">&larr; Back to Collection</a>
+        <a href="{% url 'artifacts:list' %}" class="btn-cancel">&larr; Back to Collection</a>
     </nav>
 
     <div class="detail-grid">
-        <div class="detail-gallery">
-            {% if artifact.resources.all %}
-                <img src="{{ artifact.resources.first.image_url }}" alt="{{ artifact.title }}" class="main-artifact-img">
-                <div class="thumbnail-row">
-                    {% for res in artifact.resources.all %}
-                        <img src="{{ res.image_url }}" alt="Detail view" class="thumb">
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
+
+        {% include 'artifacts/partials/detail_gallery.html' %}
 
         <div class="detail-info">
             <p class="meta-tag">{{ artifact.category.name|upper }}</p>
@@ -38,7 +31,36 @@
                 <h3>Historical Significance</h3>
                 <p>{{ artifact.description|linebreaks }}</p>
             </div>
+
+            <div class="management-controls">
+                <hr>
+                <p class="admin-label">Curator Tools</p>
+
+                <div class="button-group">
+                    <a href="{% url 'artifacts:edit' artifact.slug %}" class="btn-primary">
+                        Edit Information
+                    </a>
+
+                    <a href="{% url 'preservation:detail' artifact.slug %}" class="btn-secondary">
+                        View Preservation History
+                    </a>
+
+                    <a href="{% url 'artifacts:delete' artifact.slug %}" class="btn-danger">
+                        Remove from Archive
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
+
+<script>
+    function changeMainImage(thumbnailElement) {
+        document.getElementById('main-detail-img').src = thumbnailElement.src;
+        let thumbs = document.querySelectorAll('.thumb');
+        thumbs.forEach(thumb => thumb.classList.remove('active'));
+        thumbnailElement.classList.add('active');
+    }
+</script>
 {% endblock %}

@@ -1,0 +1,23 @@
+<div class="detail-gallery">
+    {% if artifact.media.all %}
+
+        <div class="main-image-container">
+            <img src="{{ artifact.media.first.image_url }}" alt="{{ artifact.title }}" id="main-detail-img" class="main-artifact-img">
+        </div>
+
+        {% if artifact.media.count > 1 %}
+            <div class="thumbnail-row">
+                {% for res in artifact.media.all %}
+                    <img src="{{ res.image_url }}" alt="Detail view"
+                         class="thumb {% if forloop.first %}active{% endif %}"
+                         onclick="changeMainImage(this)">
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    {% else %}
+        <div class="no-image-placeholder">
+            <p>No images available for this artifact.</p>
+        </div>
+    {% endif %}
+</div>

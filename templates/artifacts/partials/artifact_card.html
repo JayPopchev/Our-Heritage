@@ -1,0 +1,20 @@
+<div class="artifact-card">
+    {% with main_media=artifact.media.all|first %}
+        {% if main_media and main_media.image_url %}
+            <div class="card-image-wrapper">
+                <img src="{{ main_media.image_url }}" alt="{{ artifact.title }}">
+            </div>
+        {% else %}
+            <div class="card-image-wrapper placeholder-image">
+                <span>No Archive Image</span>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="card-content">
+        <h3>{{ artifact.title }}</h3>
+        <p class="meta">{{ artifact.category.name|upper }} | {{ artifact.get_material_display }}</p>
+        <p>{{ artifact.description|truncatewords:15 }}</p>
+        <a href="{% url 'artifacts:detail' artifact.slug %}" class="btn-secondary">View Details &rarr;</a>
+    </div>
+</div>

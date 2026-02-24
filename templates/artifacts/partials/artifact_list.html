@@ -1,22 +1,7 @@
 <div class="artifact-grid">
     {% for artifact in artifacts %}
-        <div class="artifact-card">
-            {% if artifact.resources.first %}
-                <img src="{{ artifact.resources.first.image_url }}" alt="{{ artifact.title }}" class="artifact-card-img">
-            {% endif %}
-
-            <p class="meta">{{ artifact.category.name|upper }}</p>
-            <h3>{{ artifact.title }}</h3>
-            <p>{{ artifact.description|truncatewords:20 }}</p>
-
-            <div class="card-footer">
-                <span class="material-tag">{{ artifact.get_material_display }}</span>
-                <a href="{% url 'artifacts:detail' artifact.slug %}" class="btn-secondary">View History &rarr;</a>
-            </div>
-        </div>
+        {% include 'artifacts/partials/artifact_card.html' %}
     {% empty %}
-        <div class="empty-message">
-            <p>No artifacts match your current filters. Try a different search term.</p>
-        </div>
+        <p class="no-results">No treasures found matching your criteria.</p>
     {% endfor %}
 </div>

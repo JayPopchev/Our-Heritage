@@ -8,6 +8,8 @@
         <h1>Bulgarian Heritage Archive</h1>
         <p>Discover the rich history and ancient treasures of Bulgaria...</p>
         <a href="{% url 'artifacts:list' %}" class="btn-primary">Explore the Collection</a>
+        <a href="{% url 'common:about' %}" class="btn-outline">Learn More</a>
+        <a href="{% url 'categories:list' %}" class="btn-outline">Historical Eras</a>
     </section>
 
     <section class="featured-section">
@@ -15,23 +17,20 @@
 
         <div class="artifact-grid">
             {% for artifact in featured_artifacts %}
-                <div class="artifact-card">
-                    {% if artifact.resources.first %}
-                        <img src="{{ artifact.resources.first.image_url }}"
-                             alt="{{ artifact.title }}"
-                             class="artifact-card-img">
-                    {% endif %}
 
-                    <h3>{{ artifact.title }}</h3>
-                    <p class="meta">{{ artifact.category }} | {{ artifact.get_material_display }}</p>
-                    <p>{{ artifact.description|truncatewords:15 }}</p>
-                    <a href="{% url 'artifacts:detail' artifact.slug %}" class="btn-secondary">View Details &rarr;</a>
-                </div>
+                {% include 'artifacts/partials/artifact_card.html' with artifact=artifact %}
+
             {% empty %}
                 <p class="empty-message">
                     The archive is currently being prepared...
                 </p>
             {% endfor %}
         </div>
+    </section>
+    <section class="info-section" style="text-align: center; margin-top: 4rem;">
+        <h2 class="section-title">Explore by Time Period</h2>
+        <p>From the Thracian gold to Medieval relics, journey through the eras of Bulgarian history.</p>
+        <br>
+        <a href="{% url 'categories:list' %}" class="btn-secondary">View All Historical Eras &rarr;</a>
     </section>
 {% endblock %}

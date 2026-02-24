@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Preservation Log | {{ artifact.title }}{% endblock %}
+
+{% block content %}
+<div class="form-page-wrapper">
+    <div class="form-card" style="border-top-color: var(--gold-thracian);">
+       <div class="form-header">
+           <span class="heritage-accent">Curator Tool</span>
+            <h1>Log Preservation Check</h1>
+            <p style="color: var(--text-muted); font-style: italic;">For artifact: <strong>{{ artifact.title }}</strong></p>
+        </div>
+
+        <form method="post" class="heritage-form" novalidate>
+            {% csrf_token %}
+
+            <div class="form-grid">
+                {% for field in form %}
+                    <div class="form-group">
+                        <label>{{ field.label }}</label>
+
+                        <div class="input-wrapper">
+                            {{ field }}
+                        </div>
+
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <span class="error-message">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+
+                        {% if field.help_text %}
+                            <small style="color: #888; font-size: 0.8rem; display: block; margin-top: 5px;">{{ field.help_text }}</small>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="form-actions">
+                <a href="{% url 'artifacts:detail' artifact.slug %}" class="btn-cancel">Cancel</a>
+                <button type="submit" class="btn-add-new">Save Record</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

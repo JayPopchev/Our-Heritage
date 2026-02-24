@@ -4,7 +4,7 @@ from django.contrib import admin
 from django.contrib import admin
 
 from preservation.models import PreservationRecord
-from .models import Artifact
+from .models import Artifact, Exhibition
 from resources.models import ArtifactResource
 
 class ArtifactResourceInline(admin.TabularInline):
@@ -22,3 +22,5 @@ class PreservationRecordInline(admin.TabularInline):
 class ArtifactAdmin(admin.ModelAdmin):
     list_display = ['title', 'category', 'material']
     inlines = [ArtifactResourceInline, PreservationRecordInline]
+
+admin.site.register(Exhibition)

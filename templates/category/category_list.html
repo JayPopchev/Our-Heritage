@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Historical Eras | Archive{% endblock %}
+{% block content %}
+<div class="dashboard-header">
+    <h1>Historical Eras</h1>
+    <a href="{% url 'categories:create' %}" class="btn-add-new">+ Add New Era</a>
+</div>
+<div class="artifact-grid">
+    {% for cat in categories %}
+    <div class="artifact-card">
+        <h3>{{ cat.get_name_display }}</h3>
+        <p>{{ cat.description|truncatewords:20 }}</p>
+        <a href="{% url 'categories:detail' cat.pk %}" class="btn-secondary">View Era Artifacts &rarr;</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

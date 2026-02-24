@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="dashboard-header">
+    <h1>Current & Upcoming Exhibitions</h1>
+</div>
+<div class="artifact-grid">
+    {% for exhibition in exhibitions %}
+    <div class="artifact-card">
+        <h3>{{ exhibition.title }}</h3>
+        <p><strong>Location:</strong> {{ exhibition.location }}</p>
+        <p><strong>Date:</strong> {{ exhibition.start_date }}</p>
+        <a href="{% url 'artifacts:exhibition_detail' exhibition.pk %}" class="btn-secondary">View Exhibition Details</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
