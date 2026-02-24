@@ -7,7 +7,6 @@ from .models import PreservationRecord
 
 @admin.register(PreservationRecord)
 class PreservationRecordAdmin(admin.ModelAdmin):
-    # Displays these columns in the admin list view
     list_display = ['artifact', 'check_date', 'condition', 'is_on_display']
 
     # Adds a sidebar filter for dates and conditions
